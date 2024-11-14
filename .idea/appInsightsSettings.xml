@@ -22,10 +22,10 @@
             <InsightsFilterSettings>
               <option name="connection">
                 <ConnectionSetting>
-                  <option name="appId" value="PLACEHOLDER" />
-                  <option name="mobileSdkAppId" value="" />
-                  <option name="projectId" value="" />
-                  <option name="projectNumber" value="" />
+                  <option name="appId" value="com.bypriyan.gradify" />
+                  <option name="mobileSdkAppId" value="1:1059357976973:android:9d3ce800d4a9f469dff5c4" />
+                  <option name="projectId" value="as-an-italian-cook-38203" />
+                  <option name="projectNumber" value="1059357976973" />
                 </ConnectionSetting>
               </option>
               <option name="signal" value="SIGNAL_UNSPECIFIED" />

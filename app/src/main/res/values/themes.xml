@@ -1,9 +1,15 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
     <style name="Base.Theme.Gradify" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <item name="android:statusBarColor">@color/white</item>
+        <item name="android:windowLightStatusBar">true</item>
     </style>
 
-    <style name="Theme.Gradify" parent="Base.Theme.Gradify" />
+    <style name="Theme.Gradify" parent="Theme.SplashScreen">
+        <item name="windowSplashScreenBackground">@color/appColor</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/app_logo</item>
+        <item name="windowSplashScreenIconBackgroundColor">@color/white</item>
+        <item name="tint">@color/white</item> <!-- Set your desired tint color here -->
+        <item name="postSplashScreenTheme">@style/Base.Theme.Gradify</item>
+    </style>
 </resources>

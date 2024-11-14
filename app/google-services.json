@@ -1,0 +1,98 @@
+{
+  "project_info": {
+    "project_number": "1059357976973",
+    "project_id": "as-an-italian-cook-38203",
+    "storage_bucket": "as-an-italian-cook-38203.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1059357976973:android:9d3ce800d4a9f469dff5c4",
+        "android_client_info": {
+          "package_name": "com.bypriyan.gradify"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1059357976973-44cmjpcp6fq60s5sndq2lvio6ik6j0qo.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDGUBwMwJxMH1jXaBVURd-KJxviRtpjFjg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1059357976973-44cmjpcp6fq60s5sndq2lvio6ik6j0qo.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "1059357976973-0jim5okb9kibhpe1hblgp6ebsoff2pe1.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.italianCook"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1059357976973:android:43ffd07a71946881dff5c4",
+        "android_client_info": {
+          "package_name": "com.yg.italian_cook"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1059357976973-5vm2e8e3kls612758k3a6ibv4ouo5kcl.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.yg.italian_cook",
+            "certificate_hash": "11e6ad974fcdb7ce071b5b07096ce659fe66ac8a"
+          }
+        },
+        {
+          "client_id": "1059357976973-s6l8p2ffv51g66gqd18c4rgjmqqa13ka.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.yg.italian_cook",
+            "certificate_hash": "9c7bc3b687ff0cd7847707358c09f7af03fb772d"
+          }
+        },
+        {
+          "client_id": "1059357976973-44cmjpcp6fq60s5sndq2lvio6ik6j0qo.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDGUBwMwJxMH1jXaBVURd-KJxviRtpjFjg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1059357976973-44cmjpcp6fq60s5sndq2lvio6ik6j0qo.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "1059357976973-0jim5okb9kibhpe1hblgp6ebsoff2pe1.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.italianCook"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
