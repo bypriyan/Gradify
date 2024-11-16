@@ -13,6 +13,7 @@ import com.bypriyan.gradify.R
 import coil3.request.crossfade
 import coil3.request.placeholder
 import com.airbnb.lottie.LottieAnimationView
+import com.bumptech.glide.Glide
 import com.bypriyan.sharemarketcourseinhindi.model.ModelOnBordingScreen
 import com.google.android.material.card.MaterialCardView
 
@@ -31,10 +32,11 @@ class AdapterOnBordingScreen(val context: Context,val elementList: List<ModelOnB
         holder.title.text = modelOnBordingSceen.title
         holder.description.text = modelOnBordingSceen.description
 
+        holder.imgOnBording.imageTintList = null
+
         holder.imgOnBording.load(modelOnBordingSceen.imgUrl) {
             crossfade(true)
         }
-
 
     }
 

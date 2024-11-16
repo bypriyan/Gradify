@@ -89,9 +89,9 @@ class OnBordingScreenActivity : AppCompatActivity() {
 
     fun getListOfOnBordingScreenContent():List<ModelOnBordingScreen>{
         return listOf(
-            ModelOnBordingScreen("https://cdni.iconscout.com/illustration/premium/thumb/stock-market-trading-6441437-5319167.png?f=webp","शेयर बाजार सीखें", "नए शेयर बाजार निवेशकों के लिए संपूर्ण मार्गदर्शन। शेयर मार्केट की जानकारी से लाभांवित हो और बेहतर निवेश का निर्णय लें।"),
-            ModelOnBordingScreen("https://cdni.iconscout.com/illustration/premium/thumb/woman-trading-in-stock-market-4658603-3868031.png","स्टॉक मार्केट में निवेश की राह","अब सीखें शेयर मार्केट के नियम, ट्रिक्स और निवेश के महत्वपूर्ण सिद्धांत इस एप्लिकेशन के माध्यम से। स्वागत है आपका।"),
-            ModelOnBordingScreen("https://cdni.iconscout.com/illustration/premium/thumb/person-earning-profits-from-stock-market-4658600-3868028.png","शेयर बाजार में शिक्षा: जैसे जानिए, बनें एक स्मार्ट निवेशक!","यहां आपको शेयर बाजार के महत्वपूर्ण सिद्धांतों की समझ मिलेगी, जो आपको स्मार्ट निवेशक बनाएगी।")
+            ModelOnBordingScreen("https://cdn2.iconfinder.com/data/icons/latopia-project-development-3d/256/Learning_Code.png","Welcome to Gradify", "Your academic journey made smarter. Stay connected with teachers, track your progress, and engage with classmates—all in one app!"),
+            ModelOnBordingScreen("https://cdn2.iconfinder.com/data/icons/latopia-school-education-3d/256/Online_Class.png","Never Miss an Update","Get important notifications and announcements from your teachers, including exam dates, schedules, and event reminders."),
+            ModelOnBordingScreen("https://cdn4.iconfinder.com/data/icons/latopia-social-media-3d/256/Social_Media_Analytic.png","Access Your Grades","View your marks for all subjects with ease. Stay informed about your academic progress in real time.")
 
         )
     }
