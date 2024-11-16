@@ -1,9 +1,11 @@
-package com.bypriyan.Gradify.DI.module
+package com.bypriyan.togocartstore.DI.module
 
 import android.content.Context
 import android.content.SharedPreferences
 import android.location.Geocoder
-import com.bypriyan.togocartstore.api.ApiService
+import com.bypriyan.bustrackingsystem.utility.PreferenceManager
+import com.bypriyan.gradify.api.ApiService
+import com.google.firebase.auth.FirebaseAuth
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -31,5 +33,17 @@ object AppModule {
     @Singleton
     fun provideApiService(retrofit: Retrofit): ApiService {
         return retrofit.create(ApiService::class.java)
+    }
+
+    @Provides
+    @Singleton
+    fun provideFirebaseAuth(): FirebaseAuth {
+        return FirebaseAuth.getInstance()
+    }
+
+    @Provides
+    @Singleton
+    fun providePreferenceManager(@ApplicationContext context: Context): PreferenceManager {
+        return PreferenceManager(context)
     }
 }

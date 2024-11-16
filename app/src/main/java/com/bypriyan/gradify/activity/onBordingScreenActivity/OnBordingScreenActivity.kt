@@ -3,25 +3,26 @@ package com.bypriyan.gradify.activity.onBordingScreenActivity
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import androidx.viewpager2.widget.ViewPager2
 import com.bypriyan.bustrackingsystem.utility.Constants
 import com.bypriyan.bustrackingsystem.utility.PreferenceManager
-import com.bypriyan.gradify.R
 import com.bypriyan.gradify.activity.login.LoginActivity
-import com.bypriyan.gradify.databinding.ActivityMainBinding
 import com.bypriyan.gradify.databinding.ActivityOnBordingScreenBinding
 import com.bypriyan.sharemarketcourseinhindi.adapter.AdapterOnBordingScreen
 import com.bypriyan.sharemarketcourseinhindi.model.ModelOnBordingScreen
-import kotlin.compareTo
+import com.google.firebase.FirebaseApp
+import com.google.firebase.auth.FirebaseAuth
+import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
+@AndroidEntryPoint
 class OnBordingScreenActivity : AppCompatActivity() {
 
     lateinit var binding: ActivityOnBordingScreenBinding
+    @Inject
+    lateinit var preferenceManager: PreferenceManager
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
@@ -71,7 +72,7 @@ class OnBordingScreenActivity : AppCompatActivity() {
                 binding.viewPager2.currentItem = nextIndex
             } else {
                 startActivity(Intent(this, LoginActivity::class.java))
-                PreferenceManager(this).putBoolean(Constants.KEY_IS_ONBORDING_SCREEN_SEEN, true)
+                preferenceManager.putBoolean(Constants.KEY_IS_ONBORDING_SCREEN_SEEN, true)
                 finish()
             }
         }
@@ -97,7 +98,7 @@ class OnBordingScreenActivity : AppCompatActivity() {
 
     override fun onStart() {
         super.onStart()
-        if(PreferenceManager(this).getBoolean(Constants.KEY_IS_ONBORDING_SCREEN_SEEN)){
+        if(preferenceManager.getBoolean(Constants.KEY_IS_ONBORDING_SCREEN_SEEN)){
             startActivity(Intent(this, LoginActivity::class.java))
             finish()
         }

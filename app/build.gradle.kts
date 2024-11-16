@@ -1,9 +1,11 @@
+import org.gradle.kotlin.dsl.android
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
+    alias(libs.plugins.google.gms.google.services)
     id("kotlin-kapt")
     id("com.google.dagger.hilt.android")
-    alias(libs.plugins.google.gms.google.services)
 }
 
 android {
@@ -17,7 +19,6 @@ android {
         versionCode = 1
         multiDexEnabled = true
         versionName = "1.0"
-
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -54,10 +55,6 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
-
-    //hilt
-    implementation("com.google.dagger:hilt-android:2.51.1")
-    kapt("com.google.dagger:hilt-android-compiler:2.51.1")
     //multidex
     implementation ("androidx.annotation:annotation:1.6.0")
     implementation ("org.jetbrains:annotations:24.0.1")
@@ -92,9 +89,13 @@ dependencies {
     //dot indicator
     implementation("com.tbuonomo:dotsindicator:5.0")
     //viewpager 2
-    implementation ("com.google.android.material:material:1.11.0")
-    implementation ("androidx.viewpager2:viewpager2:1.0.0")
+    implementation ("com.google.android.material:material:1.12.0")
+    implementation ("androidx.viewpager2:viewpager2:1.1.0")
+    //hilt
+    implementation("com.google.dagger:hilt-android:2.51.1")
+    kapt("com.google.dagger:hilt-android-compiler:2.51.1")
 }
+
 kapt {
     correctErrorTypes = true
 }

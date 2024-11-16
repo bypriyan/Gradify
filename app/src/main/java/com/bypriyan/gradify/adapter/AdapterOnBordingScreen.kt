@@ -33,9 +33,8 @@ class AdapterOnBordingScreen(val context: Context,val elementList: List<ModelOnB
 
         holder.imgOnBording.load(modelOnBordingSceen.imgUrl) {
             crossfade(true)
-            placeholder(R.drawable.app_logo)
-            error(R.drawable.app_logo)
         }
+
 
     }
 

@@ -3,9 +3,11 @@ package com.bypriyan.bustrackingsystem.utility
 
 import android.content.Context
 import android.content.SharedPreferences
+import javax.inject.Inject
 
-class PreferenceManager(context: Context) {
-    private val sharedPreferences: SharedPreferences = context.getSharedPreferences(Constants.KEY_PREFERENCE_NAME, Context.MODE_PRIVATE)
+class PreferenceManager @Inject constructor(context: Context) {
+    private val sharedPreferences: SharedPreferences =
+        context.getSharedPreferences(Constants.KEY_PREFERENCE_NAME, Context.MODE_PRIVATE)
 
     fun putBoolean(key: String, value: Boolean) {
         val editor = sharedPreferences.edit()
