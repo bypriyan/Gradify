@@ -75,7 +75,7 @@
                 app:boxStrokeColor="@color/black">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/et"
+                    android:id="@+id/phoneNumberEt"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/bg_gradient_edit_text"
@@ -110,10 +110,9 @@
                 android:layout_marginTop="@dimen/_5sdp"
                 android:textColor="@color/black"
                 android:layout_below="@id/passText"
-                app:prefixText="+91"
-                app:prefixTextColor="@color/black"
-                app:boxCornerRadiusBottomEnd="@dimen/_10sdp"
-                app:boxStrokeColor="@color/black">
+                app:boxStrokeColor="@color/black"
+                app:endIconMode="password_toggle"
+                app:endIconTint="@color/black">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/passwordEt"
@@ -121,13 +120,44 @@
                     android:layout_height="wrap_content"
                     android:background="@drawable/bg_gradient_edit_text"
                     android:textColor="@color/black"
-                    android:maxLength="10"
-                    android:inputType="phone" />
+                    android:inputType="textPassword" />
             </com.google.android.material.textfield.TextInputLayout>
+
+
+            <LinearLayout
+                android:id="@+id/securityText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_below="@id/password">
+
+                <ImageView
+                    android:id="@+id/imgSecurity"
+                    android:layout_width="@dimen/_14sdp"
+                    android:layout_height="@dimen/_14sdp"
+                    android:src="@drawable/security"
+                    android:layout_marginLeft="@dimen/_12sdp"
+                    android:layout_below="@id/phoneNumber"
+                    android:layout_marginTop="@dimen/_12sdp"
+                    app:tint="@color/green" />
+
+                <TextView
+                    android:layout_toRightOf="@id/imgSecurity"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/_6sdp"
+                    android:layout_marginRight="@dimen/_6sdp"
+                    android:textSize="@dimen/_10ssp"
+                    android:textColor="@color/black"
+                    android:text="Your Data is secured with 128-AES Encryption"
+                    android:layout_marginTop="@dimen/_12sdp"
+                    android:layout_below="@id/phoneNumber"/>
+
+            </LinearLayout>
 
             <TextView
                 android:id="@+id/forgotPass"
-                android:layout_below="@id/password"
+                android:layout_below="@id/securityText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_15sdp"
@@ -205,12 +235,13 @@
             </FrameLayout>
 
             <LinearLayout
-                android:layout_alignParentBottom="true"
+                android:id="@+id/registerBtn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:layout_below="@id/orText"
-                android:layout_marginTop="@dimen/_40sdp">
+                android:layout_marginBottom="@dimen/_20sdp"
+                android:layout_marginTop="@dimen/_30sdp">
 
                 <TextView
                     android:layout_weight="1"
@@ -239,7 +270,6 @@
                     android:layout_gravity="end"
                     android:layout_alignParentEnd="true"
                     android:textColor="@color/appColor"/>
-
 
             </LinearLayout>
 
