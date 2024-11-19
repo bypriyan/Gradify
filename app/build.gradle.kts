@@ -97,6 +97,8 @@ dependencies {
     //glide
     implementation ("com.github.bumptech.glide:glide:4.15.1")
     annotationProcessor ("com.github.bumptech.glide:compiler:4.15.1")
+    //OTP
+    implementation ("io.github.chaosleung:pinview:1.4.4")
 }
 
 kapt {

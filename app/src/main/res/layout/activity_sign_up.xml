@@ -219,7 +219,7 @@
                 app:boxStrokeColor="@color/black">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/PasswordEt"
+                    android:id="@+id/admissionNumbEt"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/bg_gradient_edit_text"
