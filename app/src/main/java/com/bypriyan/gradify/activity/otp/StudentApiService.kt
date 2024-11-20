@@ -9,5 +9,5 @@ import retrofit2.http.POST
 
 interface ApiServiceStudent {
     @POST("students.php")
-    suspend fun registerStudent(@Body student: Student): Response<Student>
+    suspend fun registerStudent(@Body student: Student): Response<ApiResponseStudent>
 }

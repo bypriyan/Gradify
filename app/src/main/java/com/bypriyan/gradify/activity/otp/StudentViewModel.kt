@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.bypriyan.gradify.apiResponse.ApiResponse
+import com.bypriyan.gradify.apiResponse.ApiResponseStudent
 import com.bypriyan.gradify.model.Student
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
@@ -15,12 +16,9 @@ class StudentViewModel @Inject constructor(
     private val repository: StudentRepository
 ) : ViewModel() {
 
-    private val _studentRegistrationState = MutableLiveData<ApiResponse<Student>>()
-    val studentRegistrationState: LiveData<ApiResponse<Student>> get() = _studentRegistrationState
+    private val _studentRegistrationState = MutableLiveData<ApiResponse<ApiResponseStudent>>()
+    val studentRegistrationState: LiveData<ApiResponse<ApiResponseStudent>> get() = _studentRegistrationState
 
-    /**
-     * Registers a student by calling the repository method.
-     */
     fun registerStudent(student: Student) {
         viewModelScope.launch {
             _studentRegistrationState.value = ApiResponse.Loading

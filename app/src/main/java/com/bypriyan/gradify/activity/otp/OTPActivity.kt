@@ -1,16 +1,24 @@
 package com.bypriyan.gradify.activity.otp
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import com.bypriyan.bustrackingsystem.utility.Constants
+import com.bypriyan.bustrackingsystem.utility.PreferenceManager
+import com.bypriyan.gradify.MainActivity
 import com.bypriyan.gradify.activity.signup.AuthViewModel
+import com.bypriyan.gradify.apiResponse.ApiResponse
 import com.bypriyan.gradify.databinding.ActivityOtpactivityBinding
 import com.bypriyan.gradify.model.Student
+import com.google.firebase.auth.FirebaseAuth
 import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 import kotlin.getValue
+import kotlin.math.log
 
 @AndroidEntryPoint
 class OTPActivity : AppCompatActivity() {
@@ -18,6 +26,10 @@ class OTPActivity : AppCompatActivity() {
     lateinit var binding: ActivityOtpactivityBinding
     private val authViewModel: AuthViewModel by viewModels()
     private val studentViewModel: StudentViewModel by viewModels()
+    @Inject
+    lateinit var preferenceManager: PreferenceManager
+    @Inject
+    lateinit var firebaseAuth: FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -46,7 +58,6 @@ class OTPActivity : AppCompatActivity() {
 
         authViewModel.isOTPCorrect.observe(this){
             if(it){
-//                startActivity(Intent(this, MainActivity::class.java))
                 registerStudentData(name, email, phoneNumber, admissionNumber, password)
             }else{
                 Toast.makeText(this, "Invalid OTP", Toast.LENGTH_LONG).show()
@@ -56,6 +67,27 @@ class OTPActivity : AppCompatActivity() {
         studentViewModel.studentRegistrationState.observe(this){student->
             Log.d("respo", "onCreate: $student")
         }
+
+        studentViewModel.studentRegistrationState.observe(this) { state ->
+            when (state) {
+                is ApiResponse.Loading -> {
+                    isLoading(true)
+                }
+                is ApiResponse.Success -> {
+                    val student = state.data
+                    isLoading(false)
+                    preferenceManager.putString(Constants.KEY_STUDENT_ID, student.id.toString())
+                    startActivity(Intent(this, MainActivity::class.java))
+                }
+                is ApiResponse.Error -> {
+                    // Display error message
+                    Log.d("lulli", "onCreate: error")
+                    isLoading(false)
+                    firebaseAuth.signOut()
+                }
+            }
+        }
+
 
     }
 
@@ -69,18 +101,9 @@ class OTPActivity : AppCompatActivity() {
         }
     }
 
-    private fun registerStudentData(
-        name: String?,
-        email: String?,
-        phoneNumber: String?,
-        admissionNumber: String?,
-        password: String?
-    ) {
-        studentViewModel.registerStudent(Student(admissionNumber!!,
-            name!!,
-            email!!,
-            phoneNumber!!,
-            "abc.jpeg"))
+    private fun registerStudentData(name: String?, email: String?, phoneNumber: String?, admissionNumber: String?, password: String?) {
+        studentViewModel.registerStudent(Student(admissionNumber!!, name!!, email!!,
+            phoneNumber!!, "abc.jpeg"))
     }
 
 }
