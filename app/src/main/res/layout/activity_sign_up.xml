@@ -224,7 +224,7 @@
                     android:layout_height="wrap_content"
                     android:background="@drawable/bg_gradient_edit_text"
                     android:textColor="@color/black"
-                    android:inputType="textPassword" />
+                    android:inputType="text" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <TextView
