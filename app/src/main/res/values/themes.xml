@@ -12,4 +12,9 @@
         <item name="tint">@color/white</item> <!-- Set your desired tint color here -->
         <item name="postSplashScreenTheme">@style/Base.Theme.Gradify</item>
     </style>
+
+    <style name="CustomBottomNavigationItem" parent="Widget.Design.BottomNavigationView">
+        <item name="android:textSize">12sp</item> <!-- Change to your desired font size -->
+        <item name="fontFamily">@font/medium</item>
+    </style>
 </resources>

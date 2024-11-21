@@ -9,7 +9,7 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import com.bypriyan.bustrackingsystem.utility.Constants
 import com.bypriyan.bustrackingsystem.utility.PreferenceManager
-import com.bypriyan.gradify.MainActivity
+import com.bypriyan.gradify.activity.dashbord.MainActivity
 import com.bypriyan.gradify.activity.signup.AuthViewModel
 import com.bypriyan.gradify.apiResponse.ApiResponse
 import com.bypriyan.gradify.databinding.ActivityOtpactivityBinding
@@ -18,7 +18,6 @@ import com.google.firebase.auth.FirebaseAuth
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 import kotlin.getValue
-import kotlin.math.log
 
 @AndroidEntryPoint
 class OTPActivity : AppCompatActivity() {
@@ -77,7 +76,10 @@ class OTPActivity : AppCompatActivity() {
                     val student = state.data
                     isLoading(false)
                     preferenceManager.putString(Constants.KEY_STUDENT_ID, student.id.toString())
-                    startActivity(Intent(this, MainActivity::class.java))
+                    val intent = Intent(this, MainActivity::class.java)
+                    intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                    startActivity(intent)
+                    finish()
                 }
                 is ApiResponse.Error -> {
                     // Display error message
