@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.bypriyan.bustrackingsystem.utility.Constants
 import com.bypriyan.bustrackingsystem.utility.PreferenceManager
 import com.bypriyan.gradify.activity.dashbord.MainActivity
+import com.bypriyan.gradify.activity.editProfile.EditProfileActivity
 import com.bypriyan.gradify.activity.signup.AuthViewModel
 import com.bypriyan.gradify.apiResponse.ApiResponse
 import com.bypriyan.gradify.databinding.ActivityOtpactivityBinding
@@ -76,7 +77,7 @@ class OTPActivity : AppCompatActivity() {
                     val student = state.data
                     isLoading(false)
                     preferenceManager.putString(Constants.KEY_STUDENT_ID, student.id.toString())
-                    val intent = Intent(this, MainActivity::class.java)
+                    val intent = Intent(this, EditProfileActivity::class.java)
                     intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                     startActivity(intent)
                     finish()
