@@ -13,8 +13,9 @@
         <item name="postSplashScreenTheme">@style/Base.Theme.Gradify</item>
     </style>
 
-    <style name="CustomBottomNavigationItem" parent="Widget.Design.BottomNavigationView">
-        <item name="android:textSize">12sp</item> <!-- Change to your desired font size -->
-        <item name="fontFamily">@font/medium</item>
+    <style name="CustomBottomNavigationItem" parent="Widget.MaterialComponents.BottomNavigationView">
+        <item name="android:textSize">14sp</item> <!-- Desired font size -->
+        <item name="fontFamily">@font/medium</item> <!-- Custom font -->
     </style>
+
 </resources>

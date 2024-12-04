@@ -61,7 +61,6 @@ class SignUpActivity : AppCompatActivity() {
             }
         }
 
-
     }
 
     private fun navigateToOTPActivity(modelSendOTPResponse: ModelSendOTPResponce) {

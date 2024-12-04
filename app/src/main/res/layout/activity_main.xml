@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -16,31 +15,28 @@
         app:defaultNavHost="true"
         android:layout_alignParentTop="true"
         android:layout_above="@id/viewLine"
-        app:navGraph="@navigation/mobile_navigation">
-    </fragment>
+        app:navGraph="@navigation/mobile_navigation" />
 
     <View
         android:layout_width="match_parent"
-        android:layout_height="@dimen/_1sdp"
+        android:layout_height=".5dp"
         android:background="@color/lite_greay"
         android:layout_above="@id/bottomNavigationView"
-        android:id="@+id/viewLine"/>
+        android:id="@+id/viewLine" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavigationView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/white"
-        app:labelVisibilityMode="selected"
-        app:itemTextColor="@color/black"
-        android:elevation="@dimen/_2sdp"
-        app:elevation="@dimen/_5sdp"
+        app:labelVisibilityMode="labeled"
+        app:itemTextColor="@color/icon_colors"
         app:itemIconTint="@color/icon_colors"
         app:itemRippleColor="@android:color/transparent"
         app:itemBackground="@drawable/bottom_nav_item_background"
         app:menu="@menu/bottom_navigation"
-        android:layout_alignParentBottom="true"
-        style="@style/CustomBottomNavigationItem"/>
-
+        android:elevation="@dimen/_2sdp"
+        style="@style/CustomBottomNavigationItem"
+        android:layout_alignParentBottom="true" />
 
 </RelativeLayout>
