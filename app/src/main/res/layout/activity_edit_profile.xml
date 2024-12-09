@@ -37,19 +37,20 @@
             android:textColor="@color/black"
             android:textSize="@dimen/_13ssp"
             android:fontFamily="@font/semibold" />
+
         <FrameLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginRight="@dimen/_15sdp"
             android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/_15sdp"
             android:layout_alignParentEnd="true">
 
+
             <TextView
-                android:id="@+id/saveBtn"
+                android:id="@+id/uploadButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="SAVE"
-                android:layout_centerVertical="true"
                 android:textStyle="bold"
                 android:textSize="@dimen/_10ssp"
                 android:background="@drawable/app_bg"
@@ -67,7 +68,6 @@
                 android:layout_gravity="center"
                 android:indeterminateTint="@color/appColor"
                 android:visibility="invisible"/>
-
 
         </FrameLayout>
 
@@ -114,6 +114,7 @@
                         android:layout_height="match_parent"
                         android:id="@+id/profile_image"
                         android:layout_gravity="center"
+                        android:scaleType="centerCrop"
                         android:visibility="gone"/>
 
                 </FrameLayout>

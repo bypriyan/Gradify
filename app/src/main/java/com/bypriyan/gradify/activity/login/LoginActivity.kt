@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.bypriyan.gradify.activity.dashbord.MainActivity
+import com.bypriyan.gradify.activity.editProfile.EditProfileActivity
 import com.bypriyan.gradify.activity.signup.SignUpActivity
 import com.bypriyan.gradify.databinding.ActivityLoginBinding
 import com.google.firebase.auth.FirebaseAuth
@@ -32,7 +33,7 @@ class LoginActivity : AppCompatActivity() {
     override fun onStart() {
         super.onStart()
         firebaseAuth.currentUser?.let {
-            startActivity(Intent(this, MainActivity::class.java))
+            startActivity(Intent(this, EditProfileActivity::class.java))
         }
     }
     
