@@ -9,9 +9,5 @@ import retrofit2.http.Multipart
 import retrofit2.http.Part
 
 interface ApiService {
-    @Multipart
-    @GET("uploadImage.php")
-    suspend fun uploadImage(
-        @Part image: MultipartBody.Part
-    ): Response<ResponseBody>
+
 }

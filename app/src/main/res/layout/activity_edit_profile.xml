@@ -37,22 +37,40 @@
             android:textColor="@color/black"
             android:textSize="@dimen/_13ssp"
             android:fontFamily="@font/semibold" />
-
-        <TextView
+        <FrameLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="SAVE"
-            android:layout_centerVertical="true"
             android:layout_marginRight="@dimen/_15sdp"
-            android:layout_alignParentEnd="true"
-            android:textStyle="bold"
-            android:textSize="@dimen/_10ssp"
-            android:background="@drawable/app_bg"
-            android:textColor="@color/white"
-            android:paddingLeft="@dimen/_10sdp"
-            android:paddingRight="@dimen/_10sdp"
-            android:paddingTop="@dimen/_4sdp"
-            android:paddingBottom="@dimen/_4sdp"/>
+            android:layout_centerVertical="true"
+            android:layout_alignParentEnd="true">
+
+            <TextView
+                android:id="@+id/saveBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="SAVE"
+                android:layout_centerVertical="true"
+                android:textStyle="bold"
+                android:textSize="@dimen/_10ssp"
+                android:background="@drawable/app_bg"
+                android:textColor="@color/white"
+                android:paddingLeft="@dimen/_10sdp"
+                android:paddingRight="@dimen/_10sdp"
+                android:paddingTop="@dimen/_4sdp"
+                android:paddingBottom="@dimen/_4sdp"/>
+
+
+            <ProgressBar
+                android:id="@+id/progressbar"
+                android:layout_width="@dimen/_20sdp"
+                android:layout_height="@dimen/_20sdp"
+                android:layout_gravity="center"
+                android:indeterminateTint="@color/appColor"
+                android:visibility="invisible"/>
+
+
+        </FrameLayout>
+
 
     </RelativeLayout>
 

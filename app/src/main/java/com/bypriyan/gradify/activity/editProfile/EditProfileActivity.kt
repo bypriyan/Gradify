@@ -77,4 +77,14 @@ class EditProfileActivity : AppCompatActivity() {
         binding.admissionNumbEt.setText(preferenceManager.getString(Constants.KEY_STUDENT_ADMISSION_NUMBER)!!)
 
     }
+
+    fun isLoading(loading: Boolean){
+        if (loading){
+            binding.progressbar.visibility = View.VISIBLE
+            binding.saveBtn.visibility = View.GONE
+        }else {
+            binding.progressbar.visibility = View.GONE
+            binding.saveBtn.visibility = View.VISIBLE
+        }
+    }
 }
