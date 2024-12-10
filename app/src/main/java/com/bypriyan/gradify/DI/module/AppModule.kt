@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.SharedPreferences
 import android.location.Geocoder
 import com.bypriyan.bustrackingsystem.utility.PreferenceManager
+import com.bypriyan.gradify.activity.dashbord.home.ApiPosts
 import com.bypriyan.gradify.activity.otp.ApiServiceStudent
 import com.bypriyan.gradify.api.ApiService
 import com.google.firebase.auth.FirebaseAuth
@@ -46,6 +47,11 @@ object AppModule {
     @Singleton
     fun provideStudentApiService(retrofit: Retrofit): ApiServiceStudent =
         retrofit.create(ApiServiceStudent::class.java)
+
+    @Provides
+    @Singleton
+    fun provideApiPostsService(retrofit: Retrofit): ApiPosts =
+        retrofit.create(ApiPosts::class.java)
 
 
     @Provides

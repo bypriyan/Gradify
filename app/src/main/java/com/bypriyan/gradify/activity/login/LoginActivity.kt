@@ -38,7 +38,7 @@ class LoginActivity : AppCompatActivity() {
     override fun onStart() {
         super.onStart()
         firebaseAuth.currentUser?.let {
-            startActivity(Intent(this, EditProfileActivity::class.java))
+            startActivity(Intent(this, MainActivity::class.java))
         }
     }
     
