@@ -100,6 +100,8 @@ dependencies {
     annotationProcessor ("com.github.bumptech.glide:compiler:4.15.1")
     //OTP
     implementation ("io.github.chaosleung:pinview:1.4.4")
+    //circle image view
+    implementation ("de.hdodenhof:circleimageview:3.1.0")
 }
 
 kapt {
