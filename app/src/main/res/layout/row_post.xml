@@ -234,15 +234,11 @@
 
         </LinearLayout>
 
-
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_1sdp"
+            android:background="@color/limeGreay"
+            android:layout_marginBottom="@dimen/_8sdp"/>
     </LinearLayout>
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/_1sdp"
-        android:background="@color/limeGreay"
-        android:layout_below="@id/con"
-        android:layout_marginBottom="@dimen/_8sdp"/>
-
-
 
 </RelativeLayout>
