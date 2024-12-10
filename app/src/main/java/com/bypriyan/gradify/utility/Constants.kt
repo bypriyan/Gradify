@@ -5,6 +5,7 @@ object Constants{
 
     const val KEY_PREFERENCE_NAME = "GradifyApp"
     const val KEY_API_SUCCESS = "success"
+    const val KEY_BASE_URL = "https://bypriyan.com/gradify-api/"
 
     const val KEY_IS_ONBORDING_SCREEN_SEEN = "isSeen"
 
