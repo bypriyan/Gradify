@@ -52,13 +52,11 @@ class HomeFragment : Fragment() {
     }
 
     private fun observeViewModel() {
-        // Observe posts data
         viewModel.posts.observe(viewLifecycleOwner) { posts ->
-            adapter.updatePosts(posts)
+            adapter.updatePosts(posts) // Append new posts to the adapter
         }
-
-        // Observe loading state (optional for showing/hiding a progress bar)
     }
+
 
     override fun onDestroyView() {
         super.onDestroyView()

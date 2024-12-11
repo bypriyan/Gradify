@@ -29,12 +29,15 @@ class PostsViewModel @Inject constructor(private val repository: PostRepository)
                     allPostsLoaded = true // No more posts
                 } else {
                     currentPage++
-                    _posts.value = (_posts.value ?: emptyList()) + newPosts
+                    val updatedPosts = (_posts.value ?: emptyList()) + newPosts // Append new posts
+                    _posts.value = updatedPosts
                 }
-            }.onFailure {
-                // Handle error (e.g., log or show a Toast)
+            }
+            result.onFailure {
+                // Handle failure, e.g., show error message
             }
             isLoading.value = false
         }
     }
+
 }

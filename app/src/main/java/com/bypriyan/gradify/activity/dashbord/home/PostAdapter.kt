@@ -27,9 +27,10 @@ class PostAdapter : RecyclerView.Adapter<PostAdapter.PostViewHolder>() {
     private val posts = mutableListOf<Data>()
 
     fun updatePosts(newPosts: List<Data>) {
-        val start = posts.size
+        val startPosition = posts.size
+        posts.clear()
         posts.addAll(newPosts)
-        notifyItemRangeInserted(start, newPosts.size)
+        notifyItemRangeInserted(startPosition, newPosts.size) // Notify the adapter about the new items
     }
 
     inner class PostViewHolder(private val binding: RowPostBinding) : RecyclerView.ViewHolder(binding.root) {
