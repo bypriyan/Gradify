@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import coil3.load
 import coil3.request.crossfade
 import com.bypriyan.bustrackingsystem.utility.Constants
+import com.bypriyan.gradify.adapter.AdapterPostImage
 import com.bypriyan.gradify.apiResponse.Data
 import com.bypriyan.gradify.databinding.RowPostBinding
 import com.bypriyan.sharemarketcourseinhindi.adapter.AdapterOnBordingScreen
@@ -45,6 +46,18 @@ class PostAdapter : RecyclerView.Adapter<PostAdapter.PostViewHolder>() {
                 }
 
                 postImgLayout.visibility = if (post.images.isNotEmpty()) View.VISIBLE else View.GONE
+
+                // Handle visibility and setup for ViewPager2
+                postImgLayout.visibility = if (post.images.isNotEmpty()) View.VISIBLE else View.GONE
+                wormDotsIndicator.visibility = if (post.images.size>1) View.VISIBLE else View.GONE
+
+                if (post.images.isNotEmpty()) {
+                    val imageAdapter = AdapterPostImage(post.images)
+                    viewPager2.adapter = imageAdapter
+                    // Set up dots indicator
+                    wormDotsIndicator.attachTo(viewPager2)
+                }
+
             }
         }
     }
@@ -68,11 +81,11 @@ class PostAdapter : RecyclerView.Adapter<PostAdapter.PostViewHolder>() {
             val diff = System.currentTimeMillis() - pastTime
             when {
                 diff < TimeUnit.MINUTES.toMillis(1) -> "Just now"
-                diff < TimeUnit.HOURS.toMillis(1) -> "${TimeUnit.MILLISECONDS.toMinutes(diff)}m ago"
-                diff < TimeUnit.DAYS.toMillis(1) -> "${TimeUnit.MILLISECONDS.toHours(diff)}h ago"
-                diff < TimeUnit.DAYS.toMillis(7) -> "${TimeUnit.MILLISECONDS.toDays(diff)}d ago"
-                diff < TimeUnit.DAYS.toMillis(30) -> "${TimeUnit.MILLISECONDS.toDays(diff) / 7}w ago"
-                diff < TimeUnit.DAYS.toMillis(365) -> "${TimeUnit.MILLISECONDS.toDays(diff) / 30}mo ago"
+                diff < TimeUnit.HOURS.toMillis(1) -> ".${TimeUnit.MILLISECONDS.toMinutes(diff)}m ago"
+                diff < TimeUnit.DAYS.toMillis(1) -> ".${TimeUnit.MILLISECONDS.toHours(diff)}h ago"
+                diff < TimeUnit.DAYS.toMillis(7) -> ".${TimeUnit.MILLISECONDS.toDays(diff)}d ago"
+                diff < TimeUnit.DAYS.toMillis(30) -> ".${TimeUnit.MILLISECONDS.toDays(diff) / 7}w ago"
+                diff < TimeUnit.DAYS.toMillis(365) -> ".${TimeUnit.MILLISECONDS.toDays(diff) / 30}mo ago"
                 else -> "${TimeUnit.MILLISECONDS.toDays(diff) / 365}y ago"
             }
         } catch (e: Exception) {
