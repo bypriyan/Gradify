@@ -7,6 +7,7 @@ import com.bypriyan.bustrackingsystem.utility.PreferenceManager
 import com.bypriyan.gradify.activity.dashbord.home.ApiPosts
 import com.bypriyan.gradify.activity.otp.ApiServiceStudent
 import com.bypriyan.gradify.api.ApiService
+import com.bypriyan.gradify.api.ApiServiceLikes
 import com.google.firebase.auth.FirebaseAuth
 import dagger.Module
 import dagger.Provides
@@ -47,6 +48,11 @@ object AppModule {
     @Singleton
     fun provideStudentApiService(retrofit: Retrofit): ApiServiceStudent =
         retrofit.create(ApiServiceStudent::class.java)
+
+    @Provides
+    @Singleton
+    fun provideLikeApiService(retrofit: Retrofit): ApiServiceLikes =
+        retrofit.create(ApiServiceLikes::class.java)
 
     @Provides
     @Singleton

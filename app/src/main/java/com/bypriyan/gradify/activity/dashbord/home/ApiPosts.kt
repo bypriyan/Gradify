@@ -8,6 +8,7 @@ import retrofit2.http.Query
 interface ApiPosts {
     @GET("posts.php")
     suspend fun getPosts(
-        @Query("page") page: Int
+        @Query("page") page: Int,
+        @Query("user_id") user_id: Int
     ): Response<ApiResponsePost>
 }

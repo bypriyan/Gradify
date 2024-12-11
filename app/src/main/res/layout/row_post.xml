@@ -120,7 +120,7 @@
         <androidx.viewpager2.widget.ViewPager2
             android:id="@+id/viewPager2"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/_250sdp"
+            android:layout_height="@dimen/_300sdp"
             android:layout_above="@id/con"
             android:layout_below="@id/contentTv"
             android:layout_toRightOf="@id/lin" />

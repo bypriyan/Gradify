@@ -21,6 +21,7 @@ import java.time.temporal.ChronoUnit
 import java.util.Locale
 import java.util.TimeZone
 import java.util.concurrent.TimeUnit
+import com.bypriyan.gradify.R
 
 class PostAdapter : RecyclerView.Adapter<PostAdapter.PostViewHolder>() {
 
@@ -57,6 +58,11 @@ class PostAdapter : RecyclerView.Adapter<PostAdapter.PostViewHolder>() {
                     viewPager2.adapter = imageAdapter
                     // Set up dots indicator
                     wormDotsIndicator.attachTo(viewPager2)
+                }
+                if(post.user_liked){
+                    likeIv.setImageResource(R.drawable.ic_liked)
+                }else{
+                    likeIv.setImageResource(R.drawable.ic_like)
                 }
 
             }

@@ -9,9 +9,12 @@ import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.bypriyan.bustrackingsystem.utility.Constants
+import com.bypriyan.bustrackingsystem.utility.PreferenceManager
 import com.bypriyan.gradify.R
 import com.bypriyan.gradify.databinding.FragmentHomeBinding
 import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class HomeFragment : Fragment() {
@@ -20,7 +23,9 @@ class HomeFragment : Fragment() {
     private val binding get() = _binding!!
     private val viewModel: PostsViewModel by viewModels()
     private val adapter = PostAdapter()
-
+    @Inject
+    lateinit var preferenceManager: PreferenceManager
+    lateinit var sId: String
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         return binding.root
@@ -31,8 +36,8 @@ class HomeFragment : Fragment() {
 
         setupRecyclerView()
         observeViewModel()
-
-        viewModel.loadPosts() // Load initial posts
+        sId = preferenceManager.getString(Constants.KEY_STUDENT_ID).toString()
+        viewModel.loadPosts(sId.toInt()) // Load initial posts
     }
 
     private fun setupRecyclerView() {
@@ -45,7 +50,7 @@ class HomeFragment : Fragment() {
                 super.onScrolled(recyclerView, dx, dy)
                 val layoutManager = recyclerView.layoutManager as LinearLayoutManager
                 if (dy > 0 && layoutManager.findLastVisibleItemPosition() >= adapter.itemCount - 1) {
-                    viewModel.loadPosts()
+                    viewModel.loadPosts(sId.toInt())
                 }
             }
         })

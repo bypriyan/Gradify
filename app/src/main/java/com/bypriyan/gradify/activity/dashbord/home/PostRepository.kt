@@ -9,9 +9,9 @@ import javax.inject.Singleton
 @Singleton
 class PostRepository @Inject constructor(private val apiService: ApiPosts) {
 
-    suspend fun fetchPosts(page: Int): Result<List<Data>> {
+    suspend fun fetchPosts(page: Int, user_id: Int): Result<List<Data>> {
         return try {
-            val response = apiService.getPosts(page)
+            val response = apiService.getPosts(page, user_id)
             if (response.isSuccessful) {
                 Result.success(response.body()?.data ?: emptyList())
             } else {

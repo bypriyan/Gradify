@@ -10,5 +10,6 @@ data class Data(
     val teacher_id: String,
     val teacher_name: String,
     val teacher_profile_image: String,
-    val title: String
+    val title: String,
+    val user_liked: Boolean
 )

@@ -18,12 +18,12 @@ class PostsViewModel @Inject constructor(private val repository: PostRepository)
     private val isLoading = MutableLiveData(false)
     private var allPostsLoaded = false
 
-    fun loadPosts() {
+    fun loadPosts(userId: Int) {
         if (isLoading.value == true || allPostsLoaded) return
 
         isLoading.value = true
         viewModelScope.launch {
-            val result = repository.fetchPosts(currentPage)
+            val result = repository.fetchPosts(currentPage, userId)
             result.onSuccess { newPosts ->
                 if (newPosts.isEmpty()) {
                     allPostsLoaded = true // No more posts
