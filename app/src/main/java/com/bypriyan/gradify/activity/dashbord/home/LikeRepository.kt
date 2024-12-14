@@ -5,6 +5,7 @@ import com.bypriyan.gradify.apiResponse.ApiResponse
 import com.bypriyan.gradify.apiResponse.ApiResponseLike
 import com.bypriyan.gradify.apiResponse.ApiResponseStudent
 import com.bypriyan.gradify.apiResponse.Data
+import com.bypriyan.gradify.model.ModelLike
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -13,7 +14,7 @@ class LikeRepository @Inject constructor(private val apiService: ApiServiceLikes
 
     suspend fun addLike(post_id: Int, student_id: Int): ApiResponse<ApiResponseLike> {
         return try {
-            val response = apiService.registerStudent(student)
+            val response = apiService.addLike(ModelLike(post_id,student_id))
             if (response.isSuccessful && response.body() != null) {
                 if(response.body()?.status.equals("success")){
                     ApiResponse.Success(response.body()!!)

@@ -1,5 +1,6 @@
 package com.bypriyan.gradify.activity.dashbord.home
 
+import android.content.Context
 import android.os.Build
 import android.util.Log
 import android.view.LayoutInflater
@@ -9,6 +10,7 @@ import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.RecyclerView
 import coil3.load
 import coil3.request.crossfade
+import com.bumptech.glide.Glide
 import com.bypriyan.bustrackingsystem.utility.Constants
 import com.bypriyan.gradify.adapter.AdapterPostImage
 import com.bypriyan.gradify.apiResponse.Data
@@ -23,9 +25,12 @@ import java.util.TimeZone
 import java.util.concurrent.TimeUnit
 import com.bypriyan.gradify.R
 
-class PostAdapter : RecyclerView.Adapter<PostAdapter.PostViewHolder>() {
+class PostAdapter(
+    private val likeViewModel: LikeViewModel, private val studentId: Int
+) : RecyclerView.Adapter<PostAdapter.PostViewHolder>() {
 
     private val posts = mutableListOf<Data>()
+    lateinit var context: Context
 
     fun updatePosts(newPosts: List<Data>) {
         val startPosition = posts.size
@@ -42,10 +47,12 @@ class PostAdapter : RecyclerView.Adapter<PostAdapter.PostViewHolder>() {
                 emailTv.text = post.teacher_email
                 contentTv.text = post.content
                 likeCount.text = post.like_count.toString()
+                commentCount.text = post.comment_count
 
-                profileImage.load(Constants.KEY_BASE_URL + "profileImg/" + post.teacher_profile_image) {
-                    crossfade(true)
-                }
+                Glide.with(context)
+                    .load(Constants.KEY_BASE_URL + "profileImg/" + post.teacher_profile_image)
+                    .placeholder(R.drawable.app_logo) // Replace with your placeholder image
+                    .into(profileImage)
 
                 postImgLayout.visibility = if (post.images.isNotEmpty()) View.VISIBLE else View.GONE
 
@@ -65,12 +72,22 @@ class PostAdapter : RecyclerView.Adapter<PostAdapter.PostViewHolder>() {
                     likeIv.setImageResource(R.drawable.ic_like)
                 }
 
+                likeLin.setOnClickListener {
+                    likeViewModel.toggleLike(post.post_id.toInt(), studentId)
+                    // Update UI optimistically
+                    post.user_liked = !post.user_liked
+                    post.like_count = (if (post.user_liked) post.like_count.toInt() + 1 else post.like_count.toInt() - 1).toString()
+                    // Updated to latest method
+                    bindingAdapter?.notifyItemChanged(bindingAdapterPosition)
+                }
+
             }
         }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PostViewHolder {
         val binding = RowPostBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        context = parent.context
         return PostViewHolder(binding)
     }
 

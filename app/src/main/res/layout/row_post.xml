@@ -153,7 +153,7 @@
         <RelativeLayout
             android:id="@+id/commentLin"
             android:layout_width="wrap_content"
-            android:layout_height="@dimen/_20sdp"
+            android:layout_height="@dimen/_30sdp"
             android:layout_weight="1">
 
             <ImageView
@@ -184,7 +184,7 @@
         <RelativeLayout
             android:id="@+id/reportLin"
             android:layout_width="wrap_content"
-            android:layout_height="@dimen/_20sdp"
+            android:layout_height="@dimen/_30sdp"
             android:layout_weight="1">
 
             <ImageView
@@ -215,7 +215,7 @@
         <RelativeLayout
             android:id="@+id/likeLin"
             android:layout_width="wrap_content"
-            android:layout_height="@dimen/_20sdp"
+            android:layout_height="@dimen/_30sdp"
             android:layout_weight="1">
 
             <ImageView

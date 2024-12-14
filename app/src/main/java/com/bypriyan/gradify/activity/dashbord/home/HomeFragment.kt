@@ -1,6 +1,7 @@
 package com.bypriyan.gradify.activity.dashbord.home
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -21,11 +22,13 @@ class HomeFragment : Fragment() {
 
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
-    private val viewModel: PostsViewModel by viewModels()
-    private val adapter = PostAdapter()
+    private val postsViewModel: PostsViewModel by viewModels()
+    private val likeViewModel: LikeViewModel by viewModels()
+    private lateinit var adapter: PostAdapter
+
     @Inject
     lateinit var preferenceManager: PreferenceManager
-    lateinit var sId: String
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         return binding.root
@@ -34,38 +37,43 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        val studentId = preferenceManager.getString(Constants.KEY_STUDENT_ID)?.toInt() ?: 0
+        adapter = PostAdapter(likeViewModel, studentId)
+
         setupRecyclerView()
-        observeViewModel()
-        sId = preferenceManager.getString(Constants.KEY_STUDENT_ID).toString()
-        viewModel.loadPosts(sId.toInt()) // Load initial posts
+        observeViewModels()
+        postsViewModel.loadPosts(studentId)
     }
 
     private fun setupRecyclerView() {
         binding.postRV.layoutManager = LinearLayoutManager(requireContext())
         binding.postRV.adapter = adapter
 
-        // Add scroll listener for infinite scrolling
         binding.postRV.addOnScrollListener(object : RecyclerView.OnScrollListener() {
             override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
                 super.onScrolled(recyclerView, dx, dy)
                 val layoutManager = recyclerView.layoutManager as LinearLayoutManager
                 if (dy > 0 && layoutManager.findLastVisibleItemPosition() >= adapter.itemCount - 1) {
-                    viewModel.loadPosts(sId.toInt())
+                    val studentId = preferenceManager.getString(Constants.KEY_STUDENT_ID)?.toInt() ?: 0
+                    postsViewModel.loadPosts(studentId)
                 }
             }
         })
     }
 
-    private fun observeViewModel() {
-        viewModel.posts.observe(viewLifecycleOwner) { posts ->
-            adapter.updatePosts(posts) // Append new posts to the adapter
+    private fun observeViewModels() {
+        postsViewModel.posts.observe(viewLifecycleOwner) { posts ->
+            adapter.updatePosts(posts)
+        }
+
+        likeViewModel.likeResponse.observe(viewLifecycleOwner) { response ->
+            // Optionally handle the like response
+            Log.d("HomeFragment", "Like response: $response")
         }
     }
-
 
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
     }
 }
-
