@@ -1,6 +1,7 @@
 package com.bypriyan.gradify.activity.dashbord.home
 
 import android.content.Context
+import android.content.Intent
 import android.os.Build
 import android.util.Log
 import android.view.LayoutInflater
@@ -24,6 +25,7 @@ import java.util.Locale
 import java.util.TimeZone
 import java.util.concurrent.TimeUnit
 import com.bypriyan.gradify.R
+import com.bypriyan.gradify.activity.comments.PostCommentsActivity
 
 class PostAdapter(
     private val likeViewModel: LikeViewModel, private val studentId: Int
@@ -79,6 +81,10 @@ class PostAdapter(
                     post.like_count = (if (post.user_liked) post.like_count.toInt() + 1 else post.like_count.toInt() - 1).toString()
                     // Updated to latest method
                     bindingAdapter?.notifyItemChanged(bindingAdapterPosition)
+                }
+
+                commentLin.setOnClickListener {
+                    context.startActivity(Intent(context, PostCommentsActivity::class.java))
                 }
 
             }
