@@ -6,6 +6,7 @@ import android.location.Geocoder
 import com.bypriyan.bustrackingsystem.utility.PreferenceManager
 import com.bypriyan.gradify.activity.dashbord.home.ApiPosts
 import com.bypriyan.gradify.activity.otp.ApiServiceStudent
+import com.bypriyan.gradify.activity.signup.ApiOTP
 import com.bypriyan.gradify.api.ApiService
 import com.bypriyan.gradify.api.ApiServiceLikes
 import com.google.firebase.auth.FirebaseAuth
@@ -58,6 +59,11 @@ object AppModule {
     @Singleton
     fun provideApiPostsService(retrofit: Retrofit): ApiPosts =
         retrofit.create(ApiPosts::class.java)
+
+    @Provides
+    @Singleton
+    fun provideApiOTPService(retrofit: Retrofit): ApiOTP =
+        retrofit.create(ApiOTP::class.java)
 
 
     @Provides
