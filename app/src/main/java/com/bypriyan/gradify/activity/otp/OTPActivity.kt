@@ -41,26 +41,18 @@ class OTPActivity : AppCompatActivity() {
         val admissionNumber = intent.getStringExtra("admissionNumber")
         val password = intent.getStringExtra("password")
         val verificationId = intent.getStringExtra("verificationId")
+        val otp = intent.getStringExtra("otp")
 
         binding.SendCodeBtn.setOnClickListener{
             var str:String =  binding.firstPinView.text.toString()
-            if(str.length==6){
-
+            if(str.length==6 && str.equals(otp)){
+                registerStudentData(name, email, phoneNumber, admissionNumber, password)
+                startActivity(Intent(this, MainActivity::class.java))
+                finish()
             }else{
                 Toast.makeText(this, "Invalid OTP", Toast.LENGTH_LONG).show()
             }
         }
-//        authViewModel.loading.observe(this){
-//            isLoading(it)
-//        }
-//
-//        authViewModel.isOTPCorrect.observe(this){
-//            if(it){
-//                registerStudentData(name, email, phoneNumber, admissionNumber, password)
-//            }else{
-//                Toast.makeText(this, "Invalid OTP", Toast.LENGTH_LONG).show()
-//            }
-//        }
 
         studentViewModel.studentRegistrationState.observe(this){student->
             Log.d("respo", "onCreate: $student")

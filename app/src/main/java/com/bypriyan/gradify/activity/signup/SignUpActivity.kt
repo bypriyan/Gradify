@@ -2,21 +2,13 @@ package com.bypriyan.gradify.activity.signup
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
-import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
-import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
-import androidx.lifecycle.repeatOnLifecycle
-import com.bypriyan.gradify.R
 import com.bypriyan.gradify.activity.otp.OTPActivity
-import com.bypriyan.gradify.databinding.ActivityLoginBinding
 import com.bypriyan.gradify.databinding.ActivitySignUpBinding
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
@@ -66,7 +58,7 @@ class SignUpActivity : AppCompatActivity() {
                     is OTPViewModel.OTPState.Success -> {
                         // Display OTP
                         isLoading(false)
-                        navigateToOTPActivity()
+                        navigateToOTPActivity(state.otp)
                     }
                     is OTPViewModel.OTPState.Error -> {
                         // Display error message
@@ -79,7 +71,7 @@ class SignUpActivity : AppCompatActivity() {
     }
         }
 
-    private fun navigateToOTPActivity() {
+    private fun navigateToOTPActivity(otp: String) {
         val name = binding.nameEt.text?.toString()
         val email = binding.emailEt.text?.toString()
         val phoneNumber = binding.phoneNumberEt.text?.toString()
@@ -92,6 +84,8 @@ class SignUpActivity : AppCompatActivity() {
             putExtra("phoneNumber", phoneNumber)
             putExtra("admissionNumber", admissionNumber)
             putExtra("password", password)
+            putExtra("otp", otp)
+
         }
         startActivity(intent)
     }
