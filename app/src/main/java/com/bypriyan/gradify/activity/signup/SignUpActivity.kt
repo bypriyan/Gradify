@@ -2,21 +2,13 @@ package com.bypriyan.gradify.activity.signup
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
-import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
-import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
-import androidx.lifecycle.repeatOnLifecycle
-import com.bypriyan.gradify.R
 import com.bypriyan.gradify.activity.otp.OTPActivity
-import com.bypriyan.gradify.databinding.ActivityLoginBinding
 import com.bypriyan.gradify.databinding.ActivitySignUpBinding
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
@@ -25,7 +17,7 @@ import kotlinx.coroutines.launch
 class SignUpActivity : AppCompatActivity() {
 
     lateinit var binding: ActivitySignUpBinding
-    private val authViewModel: AuthViewModel by viewModels()
+    private val viewModel: OTPViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -45,25 +37,41 @@ class SignUpActivity : AppCompatActivity() {
             }
         })
 
-        authViewModel.isOTPsent.observe(this) {modelSendOTPResponce ->
-            if(modelSendOTPResponce.isSent){
-                navigateToOTPActivity(modelSendOTPResponce)
-            }
-        }
-
-        authViewModel.loading.observe(this){
-            isLoading(it)
-        }
-
         binding.signUpBtn.setOnClickListener {
             if(validateInputFields()){
-                authViewModel.verifyUserWithPhoneNumber("+91${binding.phoneNumberEt.text.toString()}", this)
+                //call viewModel to send OTP
+                viewModel.sendOTP(binding.emailEt.text.toString().trim())
             }
         }
 
-    }
+        // Observe the StateFlow in a coroutine
+        lifecycleScope.launch {
+            viewModel.otpState.collect { state ->
+                when (state) {
+                    is OTPViewModel.OTPState.Idle -> {
+                        // Handle idle state
+                    }
+                    is OTPViewModel.OTPState.Loading -> {
+                        // Show loading indicator
+                        isLoading(true)
+                    }
+                    is OTPViewModel.OTPState.Success -> {
+                        // Display OTP
+                        isLoading(false)
+                        navigateToOTPActivity(state.otp)
+                    }
+                    is OTPViewModel.OTPState.Error -> {
+                        // Display error message
+                        isLoading(false)
+                        Toast.makeText(this@SignUpActivity, "Error: ${state.error}", Toast.LENGTH_LONG).show()
+                    }
+                }
+            }
 
-    private fun navigateToOTPActivity(modelSendOTPResponse: ModelSendOTPResponce) {
+    }
+        }
+
+    private fun navigateToOTPActivity(otp: String) {
         val name = binding.nameEt.text?.toString()
         val email = binding.emailEt.text?.toString()
         val phoneNumber = binding.phoneNumberEt.text?.toString()
@@ -76,7 +84,8 @@ class SignUpActivity : AppCompatActivity() {
             putExtra("phoneNumber", phoneNumber)
             putExtra("admissionNumber", admissionNumber)
             putExtra("password", password)
-            putExtra("verificationId", modelSendOTPResponse.verificationId)
+            putExtra("otp", otp)
+
         }
         startActivity(intent)
     }

@@ -11,7 +11,6 @@ import com.bypriyan.bustrackingsystem.utility.Constants
 import com.bypriyan.bustrackingsystem.utility.PreferenceManager
 import com.bypriyan.gradify.activity.dashbord.MainActivity
 import com.bypriyan.gradify.activity.editProfile.EditProfileActivity
-import com.bypriyan.gradify.activity.signup.AuthViewModel
 import com.bypriyan.gradify.apiResponse.ApiResponse
 import com.bypriyan.gradify.databinding.ActivityOtpactivityBinding
 import com.bypriyan.gradify.model.Student
@@ -24,7 +23,6 @@ import kotlin.getValue
 class OTPActivity : AppCompatActivity() {
 
     lateinit var binding: ActivityOtpactivityBinding
-    private val authViewModel: AuthViewModel by viewModels()
     private val studentViewModel: StudentViewModel by viewModels()
     @Inject
     lateinit var preferenceManager: PreferenceManager
@@ -43,22 +41,14 @@ class OTPActivity : AppCompatActivity() {
         val admissionNumber = intent.getStringExtra("admissionNumber")
         val password = intent.getStringExtra("password")
         val verificationId = intent.getStringExtra("verificationId")
+        val otp = intent.getStringExtra("otp")
 
         binding.SendCodeBtn.setOnClickListener{
             var str:String =  binding.firstPinView.text.toString()
-            if(str.length==6){
-                authViewModel.verifyOTP(verificationId!!, str)
-            }else{
-                Toast.makeText(this, "Invalid OTP", Toast.LENGTH_LONG).show()
-            }
-        }
-        authViewModel.loading.observe(this){
-            isLoading(it)
-        }
-
-        authViewModel.isOTPCorrect.observe(this){
-            if(it){
+            if(str.length==6 && str.equals(otp)){
                 registerStudentData(name, email, phoneNumber, admissionNumber, password)
+                startActivity(Intent(this, MainActivity::class.java))
+                finish()
             }else{
                 Toast.makeText(this, "Invalid OTP", Toast.LENGTH_LONG).show()
             }
