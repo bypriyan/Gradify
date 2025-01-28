@@ -44,12 +44,12 @@
                 android:layout_gravity="center_horizontal"/>
 
             <TextView
-                android:id="@+id/mobNumText"
+                android:id="@+id/emailTv"
                 android:layout_below="@id/welcmText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_40sdp"
-                android:text="Mobile Number"
+                android:text="Email Id"
                 android:textSize="@dimen/_10ssp"
                 android:textStyle="bold"
                 android:textColor="@color/black"
@@ -57,7 +57,7 @@
                 android:layout_marginRight="@dimen/_8sdp"/>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/phoneNumber"
+                android:id="@+id/emailAddressEt"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -68,23 +68,21 @@
                 app:hintTextColor="@color/black"
                 android:layout_marginTop="@dimen/_5sdp"
                 android:textColor="@color/black"
-                android:layout_below="@id/mobNumText"
-                app:prefixText="+91"
-                app:prefixTextColor="@color/black"
+                android:layout_below="@id/emailTv"
                 app:boxCornerRadiusBottomEnd="@dimen/_10sdp"
                 app:boxStrokeColor="@color/black">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/phoneNumberEt"
+                    android:id="@+id/emailEt"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/bg_gradient_edit_text"
                     android:textColor="@color/black"
-                    android:maxLength="10"
-                    android:inputType="phone" />
+                    android:inputType="textEmailAddress" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <TextView
+                android:visibility="gone"
                 android:id="@+id/passText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -92,12 +90,13 @@
                 android:text="Password"
                 android:textSize="@dimen/_10ssp"
                 android:textStyle="bold"
-                android:layout_below="@+id/phoneNumber"
+                android:layout_below="@+id/emailAddressEt"
                 android:textColor="@color/black"
                 android:layout_marginLeft="@dimen/_8sdp"
                 android:layout_marginRight="@dimen/_8sdp"/>
 
             <com.google.android.material.textfield.TextInputLayout
+                android:visibility="gone"
                 android:id="@+id/password"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
@@ -162,6 +161,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_15sdp"
                 android:text="Forgot Password?"
+                android:visibility="gone"
                 android:textSize="@dimen/_10ssp"
                 android:textStyle="bold"
                 android:layout_gravity="end"
@@ -188,8 +188,7 @@
                     android:layout_marginEnd="@dimen/_8sdp"
                     android:layout_marginBottom="@dimen/_10sdp"
                     android:backgroundTint="@color/appColor"
-                    android:text="Login"
-                    android:alpha="0.5"
+                    android:text="Get OTP"
                     android:textAllCaps="false"
                     android:textColor="@color/white"
                     app:cornerRadius="@dimen/_10sdp" />

@@ -16,4 +16,5 @@ object Constants{
     const val KEY_STUDENT_PHONENUMBER = "student_phoneNumber"
     const val KEY_STUDENT_ADMISSION_NUMBER = "student_admissionNumber"
     const val KEY_STUDENT_PROFILE_IMAGE = "student_profileImage"
+    const val KEY_IS_LOGGED_IN = "is_logged_in"
 }

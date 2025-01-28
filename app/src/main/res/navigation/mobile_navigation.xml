@@ -26,11 +26,11 @@
 
     </fragment>
 
-    <fragment android:id="@+id/navigation_Notes"
-        android:name="com.bypriyan.gradify.activity.dashbord.notes.NotesFragment"
-        android:label="Notes"
-        tools:layout="@layout/fragment_notes">
-    </fragment>
+<!--    <fragment android:id="@+id/navigation_Notes"-->
+<!--        android:name="com.bypriyan.gradify.activity.dashbord.notes.NotesFragment"-->
+<!--        android:label="Notes"-->
+<!--        tools:layout="@layout/fragment_notes">-->
+<!--    </fragment>-->
 
     <fragment android:id="@+id/navigation_Profile"
         android:name="com.bypriyan.gradify.activity.dashbord.profile.ProfileFragment"

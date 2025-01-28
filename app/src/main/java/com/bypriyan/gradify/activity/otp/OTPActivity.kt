@@ -71,6 +71,7 @@ class OTPActivity : AppCompatActivity() {
                     preferenceManager.putString(Constants.KEY_STUDENT_EMAIL, email!!)
                     preferenceManager.putString(Constants.KEY_STUDENT_PHONENUMBER, phoneNumber!!)
                     preferenceManager.putString(Constants.KEY_STUDENT_ADMISSION_NUMBER, admissionNumber!!)
+                    preferenceManager.putBoolean(Constants.KEY_IS_LOGGED_IN, true)
                     val intent = Intent(this, EditProfileActivity::class.java)
                     intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                     startActivity(intent)

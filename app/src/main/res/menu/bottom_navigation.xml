@@ -16,10 +16,10 @@
         android:icon="@drawable/result">
 
     </item>
-    <item android:id="@id/navigation_Notes"
-        android:title="Notes"
-        android:icon="@drawable/notes">
-    </item>
+<!--    <item android:id="@id/navigation_Notes"-->
+<!--        android:title="Notes"-->
+<!--        android:icon="@drawable/notes">-->
+<!--    </item>-->
 
     <item android:id="@id/navigation_Profile"
         android:title="Profile"

@@ -1,14 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/white"
+    android:padding="@dimen/_15sdp"
     tools:context=".activity.dashbord.search.SearchFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/nameInput"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:textColorHint="@color/greay"
+        app:hintTextColor="@color/dark_greay"
+        android:hint="Search here.."
+        android:layout_marginTop="@dimen/_5sdp"
+        android:textColor="@color/black"
+        app:boxCornerRadiusBottomEnd="@dimen/_10sdp"
+        app:boxStrokeColor="@color/black">
 
-</FrameLayout>
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/nameEt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableStart="@drawable/ic_search"
+            android:drawablePadding="@dimen/_15sdp"
+            android:drawableTint="@color/black"
+            android:background="@drawable/bg_gradient_edit_text"
+            android:textColor="@color/black"
+            android:inputType="textPersonName" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/lottieAnimationView"
+        android:layout_width="@dimen/_250sdp"
+        android:layout_height="@dimen/_250sdp"
+        android:layout_centerInParent="true"
+        app:lottie_rawRes="@raw/searching"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true" />
+
+
+</RelativeLayout>

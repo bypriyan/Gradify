@@ -5,6 +5,7 @@ import android.content.SharedPreferences
 import android.location.Geocoder
 import com.bypriyan.bustrackingsystem.utility.PreferenceManager
 import com.bypriyan.gradify.activity.dashbord.home.ApiPosts
+import com.bypriyan.gradify.activity.login.ApiLogin
 import com.bypriyan.gradify.activity.otp.ApiServiceStudent
 import com.bypriyan.gradify.activity.signup.ApiOTP
 import com.bypriyan.gradify.api.ApiService
@@ -64,6 +65,11 @@ object AppModule {
     @Singleton
     fun provideApiOTPService(retrofit: Retrofit): ApiOTP =
         retrofit.create(ApiOTP::class.java)
+
+    @Provides
+    @Singleton
+    fun provideApiLoginService(retrofit: Retrofit): ApiLogin =
+        retrofit.create(ApiLogin::class.java)
 
 
     @Provides
