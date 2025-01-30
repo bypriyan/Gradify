@@ -25,6 +25,8 @@ import androidx.lifecycle.repeatOnLifecycle
 import coil3.load
 import coil3.request.CachePolicy
 import coil3.request.crossfade
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bypriyan.bustrackingsystem.utility.Constants
 import com.bypriyan.bustrackingsystem.utility.PreferenceManager
 import com.bypriyan.gradify.R
@@ -82,11 +84,12 @@ class EditProfileActivity : AppCompatActivity() {
         }
 
         preferenceManager.getString(Constants.KEY_STUDENT_PROFILE_IMAGE)?.let {
-            Log.d("loading", "onCreate: ${Constants.KEY_BASE_URL+it}")
-            binding.profileImage.load(Constants.KEY_BASE_URL+it) {
-                crossfade(true)
-                diskCachePolicy(CachePolicy.ENABLED) // Cache the image to disk
-            }
+            Log.d("loading", "onCreate: ${Constants.KEY_BASE_URL +"profileImg/"+ it}")
+
+            Glide.with(binding.profileImage.context)
+                .load(Constants.KEY_BASE_URL +"profileImg/"+ it)
+                .into(binding.profileImage)
+
             binding.galleryIcon.visibility = View.GONE
             binding.profileImage.visibility = View.VISIBLE
         }

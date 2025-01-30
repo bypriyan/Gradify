@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white">
+
+
+    <ImageView
+        android:id="@+id/subjectIv"
+        android:layout_width="@dimen/_40sdp"
+        android:layout_height="@dimen/_40sdp"
+        android:layout_margin="@dimen/_12sdp"
+        android:background="@drawable/bg_gradient_edit_text"
+        android:padding="@dimen/_2sdp"
+        android:src="@drawable/java_icon" />
+
+    <TextView
+        android:id="@+id/subjectName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_12sdp"
+        android:layout_toRightOf="@id/subjectIv"
+        android:fontFamily="@font/semibold"
+        android:text="Java"
+        android:textColor="@color/bg"
+        android:textSize="@dimen/_13ssp" />
+
+    <TextView
+        android:id="@+id/content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/subjectName"
+        android:layout_marginTop="@dimen/_1sdp"
+        android:layout_toRightOf="@id/subjectIv"
+        android:text="new 'order placed' by ToGo Cart Use"
+        android:textColor="@color/dark_greay"
+        android:textSize="@dimen/_10ssp" />
+
+</RelativeLayout>

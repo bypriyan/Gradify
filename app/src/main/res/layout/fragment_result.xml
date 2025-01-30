@@ -7,25 +7,12 @@
     android:background="@color/white"
     tools:context=".activity.dashbord.result.ResultFragment">
 
-    <com.airbnb.lottie.LottieAnimationView
-        android:id="@+id/lottieAnimationView"
-        android:layout_width="@dimen/_250sdp"
-        android:layout_height="@dimen/_250sdp"
-        android:layout_centerInParent="true"
-        app:lottie_rawRes="@raw/result"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true"
-        app:lottie_autoPlay="true"
-        app:lottie_loop="true" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:text="No Result Found"
-        android:layout_below="@id/lottieAnimationView"
-        android:textStyle="bold"
-        android:fontFamily="@font/semibold"
-        android:textSize="@dimen/_12ssp"/>
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/marksRv"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="visible"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        tools:listitem="@layout/row_marks" />
 
 </RelativeLayout>

@@ -10,6 +10,8 @@ import android.view.ViewGroup
 import coil3.load
 import coil3.request.CachePolicy
 import coil3.request.crossfade
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bypriyan.bustrackingsystem.utility.Constants
 import com.bypriyan.bustrackingsystem.utility.PreferenceManager
 import com.bypriyan.gradify.R
@@ -42,13 +44,16 @@ class ProfileFragment : Fragment() {
         }
 
         preferenceManager.getString(Constants.KEY_STUDENT_PROFILE_IMAGE)?.let {
-            Log.d("loading", "onCreate: ${Constants.KEY_BASE_URL+it}")
-            binding.profileImage.load(Constants.KEY_BASE_URL+it) {
-                crossfade(true)
-                diskCachePolicy(CachePolicy.ENABLED) // Cache the image to disk
-            }
+            Log.d("loading", "onCreate: ${Constants.KEY_BASE_URL +"profileImg"+ it}")
+            Glide.with(binding.profileImage.context)
+                .load(Constants.KEY_BASE_URL +"profileImg/"+ it)
+                .diskCacheStrategy(DiskCacheStrategy.ALL) // Cache the image
+                .placeholder(R.drawable.app_logo) // Add a placeholder image
+                .into(binding.profileImage)
+
             binding.galleryIcon.visibility = View.GONE
             binding.profileImage.visibility = View.VISIBLE
+
         }
 
     }

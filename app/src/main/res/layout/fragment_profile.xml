@@ -14,28 +14,6 @@
         android:layout_alignParentTop="true"
         android:background="@color/white">
 
-        <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/backBtn"
-            android:layout_width="@dimen/_27sdp"
-            android:layout_height="@dimen/_27sdp"
-            android:layout_alignParentStart="true"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="@dimen/_15sdp"
-            android:background="@color/transparent"
-            android:padding="@dimen/_4sdp"
-            android:src="@drawable/ic_back"
-            android:tint="@color/black"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/_8sdp"
-            android:text="Edit Profile"
-            android:layout_centerVertical="true"
-            android:layout_toRightOf="@id/backBtn"
-            android:textColor="@color/black"
-            android:textSize="@dimen/_13ssp"
-            android:fontFamily="@font/semibold" />
 
         <FrameLayout
             android:layout_width="wrap_content"
@@ -265,6 +243,7 @@
                 app:hintTextColor="@color/black"
                 android:layout_marginTop="@dimen/_5sdp"
                 android:textColor="@color/black"
+                android:layout_marginBottom="@dimen/_20sdp"
                 app:boxCornerRadiusBottomEnd="@dimen/_10sdp"
                 app:boxStrokeColor="@color/black">
 

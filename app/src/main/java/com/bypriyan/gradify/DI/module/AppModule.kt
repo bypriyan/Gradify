@@ -10,6 +10,7 @@ import com.bypriyan.gradify.activity.otp.ApiServiceStudent
 import com.bypriyan.gradify.activity.signup.ApiOTP
 import com.bypriyan.gradify.api.ApiService
 import com.bypriyan.gradify.api.ApiServiceLikes
+import com.bypriyan.gradify.repositry.ApiServiceMarks
 import com.google.firebase.auth.FirebaseAuth
 import dagger.Module
 import dagger.Provides
@@ -48,11 +49,6 @@ object AppModule {
 
     @Provides
     @Singleton
-    fun provideStudentApiService(retrofit: Retrofit): ApiServiceStudent =
-        retrofit.create(ApiServiceStudent::class.java)
-
-    @Provides
-    @Singleton
     fun provideLikeApiService(retrofit: Retrofit): ApiServiceLikes =
         retrofit.create(ApiServiceLikes::class.java)
 
@@ -70,6 +66,16 @@ object AppModule {
     @Singleton
     fun provideApiLoginService(retrofit: Retrofit): ApiLogin =
         retrofit.create(ApiLogin::class.java)
+
+    @Provides
+    @Singleton
+    fun provideApiServiceStudent(retrofit: Retrofit): ApiServiceStudent =
+        retrofit.create(ApiServiceStudent::class.java)
+
+    @Provides
+    @Singleton
+    fun provideApiServiceMarks(retrofit: Retrofit): ApiServiceMarks =
+        retrofit.create(ApiServiceMarks::class.java)
 
 
     @Provides
